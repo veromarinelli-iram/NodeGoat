@@ -34,7 +34,7 @@ MongoClient.connect(db, (err, db) => {
         process.exit(1);
     }
     console.log(`Connected to the database`);
-
+    app.disable("x-powered-by");
        
     /*
     // Fix for A5 - Security MisConfig
