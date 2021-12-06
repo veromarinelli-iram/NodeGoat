@@ -84,7 +84,7 @@ MongoClient.connect(db, (err, db) => {
         // Both mandatory in Express v4
         saveUninitialized: true,
         resave: true
-        key: "sessionId",
+        
         /*
         // Fix for A5 - Security MisConfig
         // Use generic cookie name
