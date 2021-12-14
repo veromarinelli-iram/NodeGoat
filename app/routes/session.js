@@ -76,7 +76,7 @@ function SessionHandler(db) {
                     return res.render("login", {
                         userName: userName,
                         password: "",
-                        loginError: invalidUserNameErrorMessage,
+                        loginError: errorMessage,
                         //Fix for A2-2 Broken Auth - Uses identical error for both username, password error
                         // loginError: errorMessage
                         environmentalScripts
@@ -85,7 +85,7 @@ function SessionHandler(db) {
                     return res.render("login", {
                         userName: userName,
                         password: "",
-                        loginError: invalidPasswordErrorMessage,
+                        loginError: errorMessage,
                         //Fix for A2-2 Broken Auth - Uses identical error for both username, password error
                         // loginError: errorMessage
                         environmentalScripts
