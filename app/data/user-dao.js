@@ -1,5 +1,9 @@
 const bcrypt = require("bcrypt-nodejs");
 
+// Generate password hash
+var salt = bcrypt.genSaltSync();
+var passwordHash = bcrypt.hashSync(password, salt);
+
 /* The UserDAO must be constructed with a connected database object */
 function UserDAO(db) {
 
