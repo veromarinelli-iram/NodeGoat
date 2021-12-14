@@ -22,11 +22,11 @@ function UserDAO(db) {
 
         // Create user document
         const user = {
-            userName,
-            firstName,
-            lastName,
+            userName: userName,
+            firstName: firstName,
+            lastName: lastName,
             benefitStartDate: this.getRandomFutureDate(),
-            password: bcrypt.hashSync(password, bcrypt.genSaltSync())
+            password: passwordHash
             /*
             // Fix for A2-1 - Broken Auth
             // Stores password  in a safer way using one way encryption and salt hashing
