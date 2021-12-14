@@ -72,7 +72,7 @@ function UserDAO(db) {
             if (err) return callback(err, null);
 
             if (user) {
-                if (comparePassword(password, user.password)) {
+                if (bcrypt.compareSync(password, user.password)) {
                     callback(null, user);
                 } else {
                     const invalidPasswordError = new Error("Invalid password");
