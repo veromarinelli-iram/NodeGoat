@@ -107,7 +107,7 @@ function SessionHandler(db) {
             // by wrapping the below code as a function callback for the method req.session.regenerate()
             // i.e:
             // `req.session.regenerate(() => {})`
-            req.session.regenerate(() => {
+            req.session.regenerate(function() {
             req.session.userId = user._id;
             return res.redirect(user.isAdmin ? "/benefits" : "/dashboard")
         });
