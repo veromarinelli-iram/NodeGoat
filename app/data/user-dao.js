@@ -1,9 +1,5 @@
 const bcrypt = require("bcrypt-nodejs");
 
-// Generate password hash
-var salt = bcrypt.genSaltSync();
-var passwordHash = bcrypt.hashSync(password, salt);
-
 /* The UserDAO must be constructed with a connected database object */
 function UserDAO(db) {
 
@@ -22,11 +18,11 @@ function UserDAO(db) {
 
         // Create user document
         const user = {
-            userName: userName,
-            firstName: firstName,
-            lastName: lastName,
+            userName,
+            firstName,
+            lastName,
             benefitStartDate: this.getRandomFutureDate(),
-            password: passwordHash
+            password //received from request param
             /*
             // Fix for A2-1 - Broken Auth
             // Stores password  in a safer way using one way encryption and salt hashing
@@ -62,7 +58,7 @@ function UserDAO(db) {
 
         // Helper function to compare passwords
         const comparePassword = (fromDB, fromUser) => {
-            return bcrypt.compareSync(fromDB, fromUser);
+            return fromDB === fromUser;
             /*
             // Fix for A2-Broken Auth
             // compares decrypted password stored in this.addUser()
@@ -76,7 +72,7 @@ function UserDAO(db) {
             if (err) return callback(err, null);
 
             if (user) {
-                if (bcrypt.compareSync(password, user.password)) {
+                if (comparePassword(password, user.password)) {
                     callback(null, user);
                 } else {
                     const invalidPasswordError = new Error("Invalid password");
@@ -124,4 +120,4 @@ function UserDAO(db) {
     };
 }
 
-module.exports = { UserDAO };
+module.exports = { UserDAO };
