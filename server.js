@@ -73,6 +73,15 @@ MongoClient.connect(db, (err, db) => {
         // Mandatory in Express v4
         extended: false
     }));
+    // Enable session management using express middleware
+    app.use(express.cookieParser());
+    app.use(express.session({
+         secret: "s3Cur3",
+          cookie: {
+               httpOnly: true,
+               secure: true
+         }
+      }));
 
     // Enable session management using express middleware
     app.use(session({
