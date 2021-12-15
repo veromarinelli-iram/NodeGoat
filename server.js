@@ -35,7 +35,11 @@ MongoClient.connect(db, (err, db) => {
     }
     console.log(`Connected to the database`);
     app.disable("x-powered-by");
-  
+    app.use(helmet.frameguard());
+    app.use(helmet.noCache());
+    app.use(helmet.contentSecurityPolicy());
+    app.use(helmet.hsts());
+    app.use(nosniff());
     /*
     // Fix for A5 - Security MisConfig
     // TODO: Review the rest of helmet options, like "xssFilter"
