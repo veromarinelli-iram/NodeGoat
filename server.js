@@ -35,7 +35,7 @@ MongoClient.connect(db, (err, db) => {
     }
     console.log(`Connected to the database`);
     app.disable("x-powered-by");
-    
+    app.use(helmet.frameguard()); //xframe deprecated
     /*
     // Fix for A5 - Security MisConfig
     // TODO: Review the rest of helmet options, like "xssFilter"
