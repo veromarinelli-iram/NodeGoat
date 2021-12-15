@@ -59,10 +59,10 @@ function ProfileDAO(db) {
             user.bankRouting = bankRouting;
         }
         if (ssn) {
-            user.ssn = ssn;
+            user.ssn = encrypt(ssn);
         }
         if (dob) {
-            user.dob = dob;
+            user.dob = encrypt(dob);
         }
         /*
         // Fix for A7 - Sensitive Data Exposure
