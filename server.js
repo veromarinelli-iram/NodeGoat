@@ -17,7 +17,7 @@ const routes = require("./app/routes");
 const { port, db, cookieSecret } = require("./config/config"); // Application config properties
 
 // Fix for A6-Sensitive Data Exposure
-Load keys for establishing secure HTTPS connection
+// Load keys for establishing secure HTTPS connection
 const fs = require("fs");
 const https = require("https");
 const path = require("path");
